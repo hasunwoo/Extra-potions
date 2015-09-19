@@ -79,4 +79,11 @@ public class ItemPotionParticleRemover extends Item {
 	public IIcon getIconFromDamage(int metadata) {
 		return metadata == 1 ? iconActive : iconInactive;
 	}
+
+	@Override
+	public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
+		return stack.getItemDamage() == 1 ? iconActive : iconInactive;
+	}
+	
+	
 }
