@@ -8,11 +8,13 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import hasun.extrapotions.common.creativetabs.ExtraPotionsCreativeTab;
 import hasun.extrapotions.common.events.PotionBucketEventHandler;
-import hasun.extrapotions.common.init.PotionFluidRegister;
+import hasun.extrapotions.common.init.CommandRegister;
 import hasun.extrapotions.common.init.ItemRegister;
 import hasun.extrapotions.common.init.PotionEffectRegister;
+import hasun.extrapotions.common.init.PotionFluidRegister;
 import hasun.extrapotions.common.utils.IProxy;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -30,6 +32,7 @@ public class ExtraPotionsBase {
 
 	@Mod.EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
+		ExtraPotionsConfig.init();
 	}
 
 	@Mod.EventHandler
@@ -44,6 +47,11 @@ public class ExtraPotionsBase {
 	public void postinit(FMLPostInitializationEvent event) {
 		PotionFluidRegister.registerAll(true, true);
 		MinecraftForge.EVENT_BUS.register(new PotionBucketEventHandler());
+	}
+
+	@Mod.EventHandler
+	public void serverstarting(FMLServerStartingEvent event) {
+		CommandRegister.register(event);
 	}
 
 }

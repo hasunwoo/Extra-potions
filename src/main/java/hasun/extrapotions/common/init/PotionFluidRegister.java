@@ -33,24 +33,26 @@ public class PotionFluidRegister {
 
 	private static void registerToRegistery(PotionFluid potionfluid) {
 		String pName = Potion.potionTypes[potionfluid.potionID].getName();
-		
+
 		Fluid fluid = new FluidPotion(pName, potionfluid.viscosity);
 		FluidRegistry.registerFluid(fluid);
-		
+
 		Block block = new BlockPotionFluid(fluid, pName, Material.water);
 		GameRegistry.registerBlock(block, "extrapotions.potionliquid." + pName);
-		
+
 		Item bucket = new ItemPotionBucket(block, pName).setUnlocalizedName("extrapotions.potionbucket")
 				.setCreativeTab(ExtraPotionsBase.creativeTab);
 		GameRegistry.registerItem(bucket, "extrapotions.potionbucket." + pName);
-		
-		FluidContainerRegistry.registerFluidContainer(fluid, new ItemStack(bucket), FluidContainerRegistry.EMPTY_BUCKET);
-		
+
+		FluidContainerRegistry.registerFluidContainer(fluid, new ItemStack(bucket),
+				FluidContainerRegistry.EMPTY_BUCKET);
+
 		potionfluid.liquid = (FluidPotion) fluid;
 		potionfluid.liquidBlock = block;
 		potionfluid.bucket = bucket;
 	}
-	public static List<PotionFluid> getPotionLiquids(){
+
+	public static List<PotionFluid> getPotionLiquids() {
 		return Collections.unmodifiableList(potions);
 	}
 }

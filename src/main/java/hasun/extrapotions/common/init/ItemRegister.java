@@ -1,6 +1,5 @@
 package hasun.extrapotions.common.init;
 
-import cpw.mods.fml.common.API;
 import cpw.mods.fml.common.registry.GameRegistry;
 import hasun.extrapotions.common.items.ItemPotionParticleRemover;
 import hasun.extrapotions.common.main.Constants;
@@ -23,6 +22,6 @@ public class ItemRegister {
 		// particle cleaner
 		GameRegistry.addShapedRecipe(new ItemStack(itemPotionParticleRemover), new Object[] { "GDG", "DPD", "GDG", 'G',
 				Items.gold_ingot, 'D', Items.diamond, 'P', new ItemStack(Items.potionitem, 1, 8270) });
-		
+
 	}
 }
