@@ -10,6 +10,8 @@ import hasun.extrapotions.common.init.PotionFluidRegister;
 import hasun.extrapotions.common.main.Constants;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemStack;
 
 public class ExtraPotionsCreativeTab extends CreativeTabs {
 	public ExtraPotionsCreativeTab() {
@@ -33,12 +35,11 @@ public class ExtraPotionsCreativeTab extends CreativeTabs {
 		addItem(ItemRegister.itemPotionParticleRemover, listToDisplay);
 		// potion buckets
 		List<PotionFluid> pf = PotionFluidRegister.getPotionLiquids();
-		for (PotionFluid p : pf) {
+		for(PotionFluid p : pf){
 			Item bucket = p.bucket;
-			if (bucket != null)
-				addItem(bucket, listToDisplay);
+			if(bucket!=null) addItem(bucket, listToDisplay);
 		}
-
+		
 	}
 
 	private void addItem(Item item, List list) {

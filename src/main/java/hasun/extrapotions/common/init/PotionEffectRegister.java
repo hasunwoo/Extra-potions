@@ -9,13 +9,12 @@ import net.minecraft.potion.Potion;
 
 public class PotionEffectRegister {
 	public static Potion antibubble;
-	public static int antibubble_ID;
 
 	public static void register() {
 		if (Potion.potionTypes.length < 256) {
 			extendPotionSlot();
 		}
-		antibubble = new PotionAntiBubbling(antibubble_ID, false, 0);
+		antibubble = new PotionAntiBubbling(79, false, 0);
 	}
 
 	private static void extendPotionSlot() {

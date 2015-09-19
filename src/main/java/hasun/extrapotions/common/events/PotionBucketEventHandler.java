@@ -16,17 +16,17 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 
 public class PotionBucketEventHandler {
-	private HashMap<Block, Item> map = new HashMap<Block, Item>();
-
+	private HashMap<Block,Item> map = new HashMap<Block,Item>();
+	
 	public PotionBucketEventHandler() {
 		List<PotionFluid> pf = PotionFluidRegister.getPotionLiquids();
-		for (PotionFluid p : pf) {
+		for(PotionFluid p : pf){
 			Item bucket = p.bucket;
 			Block block = p.liquidBlock;
 			map.put(block, bucket);
 		}
 	}
-
+	
 	@SubscribeEvent
 	public void onBucketFill(FillBucketEvent event) {
 		ItemStack result = tryFill(event.world, event.target);
@@ -46,11 +46,11 @@ public class PotionBucketEventHandler {
 			return null;
 		}
 	}
-
-	private boolean hasBucket(Block b) {
-		if (map.containsKey(b)) {
+	
+	private boolean hasBucket(Block b){
+		if(map.containsKey(b)){
 			Item bucket = map.get(b);
-			if ((bucket != null) && (bucket instanceof ItemPotionBucket)) {
+			if((bucket!=null) && (bucket instanceof ItemPotionBucket)){
 				return true;
 			}
 		}

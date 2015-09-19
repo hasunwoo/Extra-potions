@@ -32,7 +32,7 @@ public class ItemPotionParticleRemover extends Item {
 	@Override
 	public void onUpdate(ItemStack itemstack, World world, Entity entity, int unknown1, boolean unknown2) {
 		if (!world.isRemote) {
-			if (itemstack.getItemDamage() == 1) {
+			if (itemstack.getItemDamage()==1) {
 				((EntityLivingBase) entity)
 						.addPotionEffect(new PotionEffect(PotionEffectRegister.antibubble.getId(), 20 * 3));
 			}
@@ -43,9 +43,9 @@ public class ItemPotionParticleRemover extends Item {
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
 		if (!world.isRemote) {
 			if (player.isSneaking()) {
-				if (itemstack.getItemDamage() == 0) {
+				if(itemstack.getItemDamage()==0){
 					itemstack.setItemDamage(1);
-				} else {
+				}else{
 					itemstack.setItemDamage(0);
 				}
 			}
@@ -55,14 +55,14 @@ public class ItemPotionParticleRemover extends Item {
 
 	@Override
 	public boolean hasEffect(ItemStack par1ItemStack, int pass) {
-		return par1ItemStack.getItemDamage() == 1;
+		return par1ItemStack.getItemDamage()==1;
 	}
 
 	@Override
 	public void addInformation(ItemStack itemstack, EntityPlayer player, List listToDisplay, boolean unknown) {
 		listToDisplay.add(StatCollector.translateToLocal("item.extrapotions.particleremover.tooltip.info"));
 		String unlocalized = "item.extrapotions.particleremover.tooltip.";
-		listToDisplay.add(itemstack.getItemDamage() == 1
+		listToDisplay.add(itemstack.getItemDamage()==1
 				? EnumChatFormatting.GREEN + StatCollector.translateToLocal(unlocalized + "active")
 				: EnumChatFormatting.DARK_RED + StatCollector.translateToLocal(unlocalized + "inactive"));
 	}
