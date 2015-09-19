@@ -77,6 +77,6 @@ public class ItemPotionParticleRemover extends Item {
 
 	@Override
 	public IIcon getIconFromDamage(int metadata) {
-		return metadata == 0 ? iconActive : iconInactive;
+		return metadata == 1 ? iconActive : iconInactive;
 	}
 }

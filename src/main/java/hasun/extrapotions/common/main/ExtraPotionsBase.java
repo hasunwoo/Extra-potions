@@ -30,6 +30,7 @@ public class ExtraPotionsBase {
 
 	@Mod.EventHandler
 	public void preinit(FMLPreInitializationEvent event) {
+		ExtraPotionsConfig.init();
 	}
 
 	@Mod.EventHandler
